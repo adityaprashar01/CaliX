@@ -13,15 +13,15 @@
 }
 
 :root {
-  --calix-ink: #e0e1f3;
-  --calix-bg: #10131f;
-  --calix-accent: #ff4d82;
-  --calix-joy: #f6d301;
+  --calix-ink: #0f1c3f;
+  --calix-bg: #fff9e9;
+  --calix-accent: #3b5bff;
+  --calix-joy: #ffc94a;
   --calix-good: #2fbf71;
-  --calix-soft: #1c1f2b;
-  --calix-core: #ff4d82;
+  --calix-soft: #eef1ff;
+  --calix-core: #3b5bff;
   --calix-balance: #2fbf71;
-  --calix-mobility: #acc7ff;
+  --calix-mobility: #a855f7;
 }
 
 * {
