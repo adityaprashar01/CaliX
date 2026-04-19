@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { ResetDemoButton } from "@/components/kid/BottomNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CaliX — Level Up Your Body",
+  title: "CaliX — Build Your Base",
   description:
-    "India's first digital calisthenics platform for children. Build strength, balance, and flexibility through guided quests.",
+    "CaliX is a polished mobile-first calisthenics demo for kids and parents, with real-time AI encouragement and a calm parent dashboard.",
 };
 
 export const viewport: Viewport = {
@@ -20,7 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen bg-[var(--calix-bg)] antialiased">
+        <ResetDemoButton />
+        {children}
+      </body>
     </html>
   );
 }

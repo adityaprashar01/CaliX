@@ -49,3 +49,4 @@ blob-report/
 
 # lighthouse
 .lighthouseci/
+.omx/
