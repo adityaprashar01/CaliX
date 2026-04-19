@@ -9,6 +9,7 @@ import { useKidStore, useSessionStore } from "@/lib/store";
 const tabs = [
   { label: "Hub", href: "/hub", icon: "🏟️" },
   { label: "Skills", href: "/skills", icon: "🌳" },
+  { label: "Challenges", href: "/challenges", icon: "⚔️" },
   { label: "Friends", href: "/friends", icon: "👯" },
   { label: "Profile", href: "/profile", icon: "🧢" },
 ] as const;
@@ -41,6 +42,7 @@ export function BottomNav() {
   const pathname = usePathname();
   const activeHref = useMemo(() => {
     if (pathname === "/skills") return "/skills";
+    if (pathname === "/challenges") return "/challenges";
     if (pathname === "/friends") return "/friends";
     if (pathname === "/profile") return "/profile";
     return "/hub";

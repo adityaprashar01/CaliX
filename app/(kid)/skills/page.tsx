@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { BottomNav } from "@/components/kid/BottomNav";
@@ -36,9 +37,9 @@ export default function SkillsPage() {
         <div className="mt-6 grid grid-cols-3 gap-3">
           {skillPaths.map((path) => (
             <section key={path.slug} className="rounded-[28px] bg-white/8 p-3 backdrop-blur-sm">
-              <h2 className="mb-4 text-center text-xs font-black uppercase tracking-[0.18em]" style={{ color: path.color }}>
+              <Link href={`/skills/${path.slug}`} className="mb-4 block text-center text-xs font-black uppercase tracking-[0.18em]" style={{ color: path.color }}>
                 {path.title}
-              </h2>
+              </Link>
               <div className="flex flex-col items-center gap-1">
                 {path.nodes.map((node, index) => {
                   const unlocked = totalXp >= node.unlockXp;
