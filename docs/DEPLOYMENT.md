@@ -34,6 +34,19 @@ If you prefer dashboard setup:
 3. Set the environment variables below.
 4. Deploy Production from `main`.
 
+
+## Vercel build settings to check
+
+For this repository, Vercel should treat the app as **Next.js** and use the repo root as the project root.
+
+Recommended Project Settings -> Build and Deployment:
+- **Framework Preset:** `Next.js`
+- **Root Directory:** repo root (`.`)
+- **Build Command:** leave default, or `pnpm build`
+- **Output Directory:** **leave empty / do not override**
+
+If Vercel reports `No Output Directory named "public" found after the Build completed`, that usually means the project has an Output Directory override intended for a static site. Clear that override and redeploy.
+
 ## Required Vercel environment variables
 
 Set these for **Production** at minimum, and also **Preview** if you want branch deploys to work:
