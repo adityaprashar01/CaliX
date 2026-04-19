@@ -6,6 +6,8 @@
 
 Calix is a gamified fitness web app for children that turns short bodyweight workouts into a progression loop that feels closer to a game than a chore. It is built for kids who are spending more time on screens than on movement, and for parents who want a safer, more structured way to build healthy habits.
 
+> **Foundation, not finish line.** Fitness is the starting wedge — the first pillar of a broader child wellness platform. Calix is being built to expand into **mental wellness**, starting with an AI-powered mood journal that helps kids express how they feel and gives parents emotional visibility without invading privacy. Physical movement today; emotional awareness next.
+
 ## What Calix is solving
 
 Kids do not avoid movement because they hate being active.
@@ -48,6 +50,9 @@ What makes the product different:
    - post-workout encouragement for kids
    - plain-language summaries for parents
    - next-quest recommendations
+
+7. **Mental wellness as a first-class pillar**  
+   Most kid fitness apps stop at the body. Calix is designed to expand into emotional health — starting with an AI mood journal where kids can express feelings privately and parents receive mood signals (never transcripts) that nudge them to connect with their child. Physical health and mental health in one trusted loop.
 
 ## The pivot
 
@@ -103,6 +108,47 @@ A typical flow:
 - class participation view
 - challenge launch support
 - school movement-week potential
+
+## Mental wellness — the next pillar
+
+Fitness gets kids moving. But physical health is only half the picture. The next expansion for Calix is **mental wellness** — specifically, an AI-powered mood journal designed for children.
+
+### How it works
+
+1. **Kid opens the journal** — a warm, conversational AI space where they can talk about their day, feelings, worries, or wins
+2. **AI listens and reads mood** — the system identifies emotional patterns (happy, anxious, low, excited, frustrated) from the conversation
+3. **Only mood is stored, never the chat** — the child's words stay private. No transcripts. No logs. No context saved. The AI extracts a mood signal and discards the conversation
+4. **Parents see mood patterns** — the parent dashboard shows a mood timeline: how the child has been feeling over days and weeks. Not what they said — just how they felt
+5. **Nudges, not surveillance** — when a child trends low or anxious, parents get a gentle prompt: "Your child might need some extra time today." The goal is connection, not monitoring
+
+### Why this matters
+
+Kids rarely tell parents how they actually feel. They lack the vocabulary, the comfort, or the moment. An AI journal gives them a low-pressure space to express emotions — and gives parents an emotional signal they would otherwise never get.
+
+This is not therapy. This is not diagnosis. This is a parent learning their child had a rough week and choosing to spend an evening together because the app showed them something they would have missed.
+
+### Design principles for the mood journal
+
+- **Privacy-first** — mood only, never content. The child must trust the journal is theirs
+- **Age-appropriate AI** — warm, simple language. No clinical framing. No probing questions
+- **Parent view is mood-only** — emotion patterns, trend lines, gentle nudges. No transcripts, no quotes, no specifics
+- **Opt-in, not mandatory** — the journal is a space, not an assignment
+- **Escalation path** — if the AI detects signals of serious distress (self-harm language, crisis indicators), it surfaces a gentle resource and optionally alerts the parent with care, following child safety best practices
+- **No data monetization** — mood data is never sold, shared with third parties, or used for advertising
+
+### What the parent sees
+
+- A mood calendar with color-coded days
+- Weekly mood summary ("This week: mostly cheerful, one tough day on Wednesday")
+- Gentle nudge cards ("Spend 10 minutes together tonight — your child might appreciate it")
+- No access to journal content. Ever
+
+### What the child sees
+
+- A friendly chat space ("Hey! How was today?")
+- Optional mood stickers or emoji before/after journaling
+- Streaks for journaling consistency (ties into the existing gamification loop)
+- Their own mood history if they want to reflect
 
 ## Product principles
 
@@ -312,18 +358,24 @@ New API routes should validate input/output (e.g. Zod) and ship with tests where
 - stronger challenge mechanics
 - better next-quest recommendation logic
 - improved parent reporting
+- **mood journal MVP** — AI chat space for kids, mood extraction, parent mood dashboard
 
 ### Later
 - school dashboard expansion
 - challenge operations for classes
 - deeper retention systems
 - subscription optimization
+- **mood trend analytics** — weekly/monthly emotional patterns for parents
+- **journal ↔ fitness correlation** — surface links between movement consistency and mood
+- **teacher wellness view** — class-level emotional climate (aggregated, anonymized)
 
 ## What this project is really trying to prove
 
 Calix is testing a simple idea:
 
-**If fitness feels like progress instead of pressure, kids come back.**
+**If wellness feels like progress instead of pressure, kids come back.**
+
+Fitness is the first proof point. Mental wellness is the second. The platform thesis is that a child's physical and emotional health can be supported through the same trust loop: kids get a space that respects them, parents get visibility that helps them connect, and the habit compounds.
 
 And if parents can clearly see that the product is safe, structured, and useful, they will support the habit instead of fighting for it.
 
