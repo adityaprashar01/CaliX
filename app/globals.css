@@ -14,14 +14,18 @@
 
 :root {
   --calix-ink: #0f1c3f;
-  --calix-bg: #fff9e9;
-  --calix-accent: #3b5bff;
-  --calix-joy: #ffc94a;
+  --calix-bg: #fff7ea;
+  --calix-accent: #3159ff;
+  --calix-joy: #ffcf54;
   --calix-good: #2fbf71;
-  --calix-soft: #eef1ff;
-  --calix-core: #3b5bff;
-  --calix-balance: #2fbf71;
-  --calix-mobility: #a855f7;
+  --calix-soft: #edf2ff;
+  --calix-core: #3159ff;
+  --calix-balance: #29b56d;
+  --calix-mobility: #9753ff;
+  --calix-surface: rgba(255, 255, 255, 0.82);
+  --calix-surface-strong: #ffffff;
+  --calix-line: rgba(15, 28, 63, 0.08);
+  --calix-shadow: 0 24px 60px rgba(15, 28, 63, 0.12);
 }
 
 * {
@@ -34,9 +38,24 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--calix-bg);
+  font-family: "Avenir Next", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
   color: var(--calix-ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 207, 84, 0.35), transparent 30%),
+    radial-gradient(circle at top right, rgba(49, 89, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #fff9ef 0%, #fff2d9 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.22;
 }
 
 button,
@@ -50,6 +69,10 @@ a:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--calix-accent);
   outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(49, 89, 255, 0.18);
 }
 
 .confetti-piece {
