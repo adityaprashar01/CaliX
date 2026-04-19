@@ -4,52 +4,28 @@
   --color-calix-ink: var(--calix-ink);
   --color-calix-bg: var(--calix-bg);
   --color-calix-accent: var(--calix-accent);
-  --color-calix-accent-soft: var(--calix-accent-soft);
   --color-calix-joy: var(--calix-joy);
-  --color-calix-joy-soft: var(--calix-joy-soft);
   --color-calix-good: var(--calix-good);
   --color-calix-soft: var(--calix-soft);
   --color-calix-core: var(--calix-core);
   --color-calix-balance: var(--calix-balance);
   --color-calix-mobility: var(--calix-mobility);
-  --color-calix-mobility-bright: var(--calix-mobility-bright);
-  --color-calix-surface: var(--calix-surface);
-  --color-calix-surface-low: var(--calix-surface-low);
-  --color-calix-surface-high: var(--calix-surface-high);
-  --color-calix-surface-highest: var(--calix-surface-highest);
-
-  --font-display: var(--font-plus-jakarta);
-  --font-body: var(--font-inter);
-  --font-label: var(--font-be-vietnam);
 }
 
 :root {
-  --calix-bg: #10131f;
-  --calix-ink: #e0e1f3;
-
-  --calix-surface-lowest: #0b0e19;
-  --calix-surface-low: #181b27;
-  --calix-surface: #1c1f2b;
-  --calix-surface-high: #262936;
-  --calix-surface-highest: #313441;
-  --calix-surface-bright: #363946;
-
-  --calix-accent: #ff4d82;
-  --calix-accent-soft: #ffb1c0;
-  --calix-joy: #f6d301;
-  --calix-joy-soft: #fff1be;
+  --calix-ink: #0f1c3f;
+  --calix-bg: #fff7ea;
+  --calix-accent: #3159ff;
+  --calix-joy: #ffcf54;
   --calix-good: #2fbf71;
-  --calix-soft: #1c1f2b;
-  --calix-core: #ff4d82;
-  --calix-balance: #2fbf71;
-  --calix-mobility: #acc7ff;
-  --calix-mobility-bright: #488fff;
-
-  --calix-line: rgba(255, 177, 192, 0.08);
-  --calix-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  --calix-glow-pink: 0 0 24px rgba(255, 77, 130, 0.35);
-  --calix-glow-gold: 0 0 24px rgba(246, 211, 1, 0.3);
-  --calix-glow-cyan: 0 0 24px rgba(56, 136, 255, 0.3);
+  --calix-soft: #edf2ff;
+  --calix-core: #3159ff;
+  --calix-balance: #29b56d;
+  --calix-mobility: #9753ff;
+  --calix-surface: rgba(255, 255, 255, 0.82);
+  --calix-surface-strong: #ffffff;
+  --calix-line: rgba(15, 28, 63, 0.08);
+  --calix-shadow: 0 24px 60px rgba(15, 28, 63, 0.12);
 }
 
 * {
@@ -62,17 +38,24 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  background: var(--calix-bg);
+  font-family: "Avenir Next", "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
   color: var(--calix-ink);
+  background:
+    radial-gradient(circle at top left, rgba(255, 207, 84, 0.35), transparent 30%),
+    radial-gradient(circle at top right, rgba(49, 89, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #fff9ef 0%, #fff2d9 100%);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
-}
-
-::selection {
-  background: rgba(255, 77, 130, 0.25);
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.22;
 }
 
 button,
@@ -86,6 +69,10 @@ a:focus-visible,
 input:focus-visible {
   outline: 2px solid var(--calix-accent);
   outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(49, 89, 255, 0.18);
 }
 
 .confetti-piece {
