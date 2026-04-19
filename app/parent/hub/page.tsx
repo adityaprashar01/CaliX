@@ -11,7 +11,7 @@ import { useKidStore, useParentStore } from "@/lib/store";
 const FALLBACK_CONSISTENCY = 92;
 
 export default function ParentHubPage() {
-  const { childName } = useParentStore();
+  const { childName, children } = useParentStore();
   const kidState = useKidStore();
   const [summary, setSummary] = useState<string | null>(null);
 
@@ -68,6 +68,15 @@ export default function ParentHubPage() {
             </div>
           )}
         </motion.section>
+
+        <Link href="/parent/children" className="mt-5 flex items-center justify-between rounded-[32px] border border-[var(--calix-line)] bg-[var(--calix-surface)] px-5 py-4 text-[var(--calix-ink)] shadow-sm">
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[var(--calix-accent)]">Children</div>
+            <div className="mt-1 text-lg font-black">{children.length} linked athletes</div>
+            <div className="text-sm text-[var(--calix-ink)]/58">Switch from {childName} to another profile view.</div>
+          </div>
+          <div className="text-2xl">→</div>
+        </Link>
 
         <Link href="/quest/balance-beginner" className="mt-5 flex items-center justify-between rounded-[32px] bg-[var(--calix-ink)] px-5 py-5 text-white shadow-[var(--calix-shadow)]">
           <div>

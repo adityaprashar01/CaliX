@@ -38,13 +38,25 @@ type KidStore = {
   resetToDemo: () => void;
 };
 
+type ParentChild = {
+  id: string;
+  name: string;
+  level: number;
+  streak: number;
+  focus: string;
+};
+
 type ParentStore = {
   email: string;
   childName: string;
+  onboarded: boolean;
+  children: ParentChild[];
+  completeParentOnboarding: (childName?: string) => void;
+  selectChild: (childName: string) => void;
+  resetParentDemo: () => void;
 };
 
-const createStorage = () =>
-  createJSONStorage(() => localStorage);
+const createStorage = () => createJSONStorage(() => localStorage);
 
 const startOfTodayIso = () => {
   const now = new Date();
@@ -66,6 +78,11 @@ const initialKidState = {
   badgeSlugs: [] as string[],
   onboarded: false,
 };
+
+const demoChildren: ParentChild[] = [
+  { id: "aarav", name: "Aarav", level: 3, streak: 5, focus: "Core Base" },
+  { id: "myra", name: "Myra", level: 2, streak: 3, focus: "Balance" },
+];
 
 export const useSessionStore = create<SessionStore>()(
   persist(
@@ -142,9 +159,24 @@ export const useKidStore = create<KidStore>()(
 
 export const useParentStore = create<ParentStore>()(
   persist(
-    () => ({
+    (set) => ({
       email: "priya+demo@calix.app",
       childName: "Aarav",
+      onboarded: true,
+      children: demoChildren,
+      completeParentOnboarding: (childName) =>
+        set({
+          onboarded: true,
+          childName: childName || "Aarav",
+        }),
+      selectChild: (childName) => set({ childName }),
+      resetParentDemo: () =>
+        set({
+          email: "priya+demo@calix.app",
+          childName: "Aarav",
+          onboarded: true,
+          children: demoChildren,
+        }),
     }),
     {
       name: "calix-parent",
@@ -153,4 +185,4 @@ export const useParentStore = create<ParentStore>()(
   ),
 );
 
-export type { AgeBucket, AvatarColor, AvatarStyle, GoalType };
+export type { AgeBucket, AvatarColor, AvatarStyle, GoalType, ParentChild };

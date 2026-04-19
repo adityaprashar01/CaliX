@@ -79,6 +79,14 @@ export default function HubPage() {
         <div className="mt-6">
           <ActivityChart data={demoWeek} highlightDay="Sun" />
         </div>
+
+        <Link href="/challenges" className="mt-6 block">
+          <section className="rounded-[32px] border border-[var(--calix-line)] bg-white px-5 py-4 shadow-[var(--calix-shadow)]">
+            <div className="text-[10px] font-black uppercase tracking-[0.24em] text-[var(--calix-accent)]">Weekly Challenge</div>
+            <div className="mt-1 text-lg font-black text-[var(--calix-ink)]">Core Battle</div>
+            <div className="mt-1 text-sm text-[var(--calix-ink)]/58">One weekly sprint, one leaderboard-worthy effort.</div>
+          </section>
+        </Link>
       </div>
       <BottomNav />
     </main>

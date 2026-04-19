@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useKidStore, useSessionStore } from "@/lib/store";
+import { useKidStore, useParentStore, useSessionStore } from "@/lib/store";
 
 const roles = [
   {
@@ -45,7 +45,9 @@ export default function RoleSelectPage() {
       router.push(onboarded ? "/hub" : "/onboarding");
       return;
     }
-    router.push("/parent/hub");
+
+    const onboarded = useParentStore.getState().onboarded;
+    router.push(onboarded ? "/parent/hub" : "/parent/onboarding");
   };
 
   return (
