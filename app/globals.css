@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-calix-ink: #0F1C3F;
+  --color-calix-bg: #FFF9E9;
+  --color-calix-accent: #3B5BFF;
+  --color-calix-joy: #FFC94A;
+  --color-calix-good: #2FBF71;
+  --color-calix-soft: #EEF1FF;
+}
+
+:root {
+  --calix-ink: #0F1C3F;
+  --calix-bg: #FFF9E9;
+  --calix-accent: #3B5BFF;
+  --calix-joy: #FFC94A;
+  --calix-good: #2FBF71;
+  --calix-soft: #EEF1FF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --calix-ink: #E8ECF4;
+    --calix-bg: #1A1A2E;
+    --calix-accent: #6B8AFF;
+    --calix-joy: #FFD76E;
+    --calix-good: #5AD895;
+    --calix-soft: #2A2A4A;
+  }
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--calix-bg);
+  color: var(--calix-ink);
+}
