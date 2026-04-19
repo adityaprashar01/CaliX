@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "CaliX — India's first digital calisthenics platform for children",
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": ">=20",
     "pnpm": ">=9"
