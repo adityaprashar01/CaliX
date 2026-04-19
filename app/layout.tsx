@@ -1,6 +1,25 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans, Inter, Be_Vietnam_Pro } from "next/font/google";
 import { ResetDemoButton } from "@/components/kid/BottomNav";
 import "./globals.css";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-plus-jakarta",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+});
+
+const beVietnam = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-be-vietnam",
+});
 
 export const metadata: Metadata = {
   title: "CaliX — Build Your Base",
@@ -11,7 +30,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#3B5BFF",
+  themeColor: "#10131f",
 };
 
 export default function RootLayout({
@@ -21,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[var(--calix-bg)] antialiased">
+      <body className={`${plusJakarta.variable} ${inter.variable} ${beVietnam.variable} min-h-screen bg-[var(--calix-bg)] antialiased`}>
         <ResetDemoButton />
         {children}
       </body>
