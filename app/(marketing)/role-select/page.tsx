@@ -7,7 +7,7 @@ import { useKidStore, useSessionStore } from "@/lib/store";
 const roles = [
   {
     id: "kid" as const,
-    label: "I\'m a Kid",
+    label: "I'm a Kid",
     icon: "🧒",
     title: "Athlete Mode",
     detail: "Fast, gamey, full of badges and quests.",
@@ -16,7 +16,7 @@ const roles = [
   },
   {
     id: "parent" as const,
-    label: "I\'m a Parent",
+    label: "I'm a Parent",
     icon: "👨‍👩‍👧",
     title: "Coach View",
     detail: "Calm weekly insight, progress, and safety-first storytelling.",
