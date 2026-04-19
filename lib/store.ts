@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-type Role = "kid" | "parent" | null;
+type Role = "kid" | "parent" | "teacher" | null;
 type AgeBucket = "6-9" | "10-12" | "13-15" | null;
 type AvatarColor = "blue" | "green" | "purple" | "orange" | "pink";
 type AvatarStyle = "striker" | "balancer" | "mover";

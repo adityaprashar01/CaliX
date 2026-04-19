@@ -111,8 +111,11 @@ export default function RewardPage() {
         </motion.div>
       </div>
 
-      <Link href="/hub" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(90deg,#3159ff_0%,#4f72ff_58%,#ffcf54_100%)] px-8 py-3 font-black uppercase tracking-[0.16em] text-white shadow-[var(--calix-shadow)]">
-        Continue
+      <Link href="/assessment" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(90deg,#ff4d82_0%,#ffb1c0_100%)] px-8 py-3 font-black uppercase tracking-[0.16em] text-white shadow-[var(--calix-shadow)]">
+        Take quick fitness check
+      </Link>
+      <Link href="/hub" className="mt-3 inline-flex min-h-11 items-center justify-center text-sm font-black uppercase tracking-[0.16em] text-[var(--calix-accent)]">
+        Skip for now
       </Link>
     </main>
   );

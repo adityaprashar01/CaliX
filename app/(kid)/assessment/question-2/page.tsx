@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 const options = [
-  { label: "I prefer short focused sessions", beginnerHref: "/assessment/result-beginner", advancedHref: "/assessment/result-beginner" },
-  { label: "I can stay locked in for a full challenge", beginnerHref: "/assessment/result-beginner", advancedHref: "/assessment/result-advanced" },
+  { label: "I prefer short focused sessions", beginnerHref: "/assessment/result-beginner", advancedHref: "/assessment/result-intermediate" },
+  { label: "I can stay locked in for a full challenge", beginnerHref: "/assessment/result-intermediate", advancedHref: "/assessment/result-advanced" },
 ] as const;
 
 type AssessmentQuestionTwoPageProps = {

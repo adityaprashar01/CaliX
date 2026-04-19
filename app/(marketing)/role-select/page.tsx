@@ -27,10 +27,10 @@ const roles = [
     id: null,
     label: "School / Teacher",
     icon: "🏫",
-    title: "Coming Soon",
-    detail: "Club programs and classroom movement lanes are next.",
-    accent: "linear-gradient(135deg, #dadde8 0%, #eff1f7 100%)",
-    enabled: false,
+    title: "Educator Hub",
+    detail: "Launch class challenges and track hero momentum.",
+    accent: "linear-gradient(135deg, #f6d301 0%, #ffe25f 100%)",
+    enabled: true,
   },
 ] as const;
 
@@ -38,7 +38,7 @@ export default function RoleSelectPage() {
   const router = useRouter();
   const setRole = useSessionStore((state) => state.setRole);
 
-  const handleSelect = (role: "kid" | "parent") => {
+  const handleSelect = (role: "kid" | "parent" | "teacher") => {
     setRole(role);
     if (role === "kid") {
       const onboarded = useKidStore.getState().onboarded;
@@ -46,8 +46,13 @@ export default function RoleSelectPage() {
       return;
     }
 
-    const onboarded = useParentStore.getState().onboarded;
-    router.push(onboarded ? "/parent/hub" : "/parent/onboarding");
+    if (role === "parent") {
+      const onboarded = useParentStore.getState().onboarded;
+      router.push(onboarded ? "/parent/hub" : "/parent/onboarding");
+      return;
+    }
+
+    router.push("/teacher/class");
   };
 
   return (
