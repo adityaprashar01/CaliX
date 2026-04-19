@@ -1,254 +1,169 @@
 # Calix
 
-**Move. Unlock. Grow.**
+**Turn screen time into strong time.**
 
-Calix is a gamified fitness web app for children that turns short bodyweight workouts into a progression loop that feels closer to a game than a chore. It is built for kids who are spending more time on screens than on movement, and for parents who want a safer, more structured way to build healthy habits.
+Calix helps busy parents of screen-heavy kids who avoid sports build a safe 5-minute daily movement habit at home.
 
-## What Calix is solving
+Kids get game-like movement quests, instant rewards, streaks, and visible progress.  
+Parents get safety, structure, and proof that the routine is working.
 
-Kids do not avoid movement because they hate being active.
-They avoid it because most fitness products are:
+> This is not a generic fitness app for all children.  
+> Calix is built for one specific wedge: families who know their child is becoming too sedentary, but do not have a safe, structured, low-friction routine that actually sticks.
 
-- made for adults, then simplified for kids
-- boring compared to games and short-form content
-- unclear in progress and rewards
-- not trusted by parents
-- disconnected from schools and daily routines
+## The problem
 
-Calix is designed around a sharper problem:
+Many parents already know the problem:
 
-**How do we make fitness feel fun enough for kids to return, while making it safe and measurable enough for parents to approve?**
+- their child spends too much time on screens
+- sports classes take time, money, and travel
+- random YouTube workouts do not feel safe or age-appropriate
+- kids lose interest fast when fitness feels boring
+- parents want to help, but do not know what is safe, effective, or realistic to do consistently at home
 
-## Why this is not “just another fitness app”
+That gap is where Calix lives.
 
-Most fitness apps optimize for discipline.
-Calix optimizes for **motivation, trust, and habit formation**.
+## Why Calix exists
 
-What makes the product different:
+Kids do not need another lecture about exercise.
 
-1. **Kid-first design**  
-   The product is built for children aged roughly 6–15, not adapted from an adult workout app.
+They need movement to feel as engaging as the digital experiences already competing for their attention.
 
-2. **Calisthenics as the wedge**  
-   Calix focuses on short, bodyweight-based movement that needs little to no equipment, works at home or in school, and is easier to structure into visible progress.
-
-3. **Dual-user product loop**  
-   Kids get quests, rewards, avatars, streaks, and unlocks. Parents get reassurance, visibility, and safety summaries.
-
-4. **Screen-time redesign, not screen-time guilt**  
-   Instead of asking kids to leave screens, Calix tries to transform screen time into active time.
-
-5. **Distribution built into the concept**  
-   The product is not only for direct family use. It also has a school / teacher path for class participation, challenge weeks, and adoption loops.
-
-6. **Lean AI with a job to do**  
-   AI is used only where it adds product value:
-   - post-workout encouragement for kids
-   - plain-language summaries for parents
-   - next-quest recommendations
-
-## The pivot
-
-This project did not stay at the level of a generic “fun fitness app.”
-
-The sharper product direction is:
-
-- from **broad fitness** to **children’s calisthenics**
-- from **single-user workout flow** to **kid + parent trust loop**
-- from **demo-first framing** to **a distribution-aware product**
-- from **feature collection** to **one polished habit loop**
-
-That means the real wedge is no longer “fitness with gamification.”
-It is:
-
-> **a child-safe, parent-trusted, gamified calisthenics platform for Indian families and schools**
-
-## Core product loop
+Calix turns physical activity into a short daily game loop:
 
 **Quest → Reward → Progress → Validation → Repeat**
 
-A typical flow:
+The product is designed around two truths:
 
-1. Kid enters the app
-2. Chooses role / journey
-3. Creates an avatar
-4. Selects a goal
-5. Completes a short Quick Quest
-6. Receives XP, badge, and progress feedback
-7. Lands on a dashboard with streaks and next unlocks
-8. Parent sees a summary with progress and reassurance
+- **kids need fun, ownership, and visible progress**
+- **parents need trust, safety, and measurable value**
 
-## MVP features
+## Who it is for
 
-### Kid experience
-- role-based onboarding
-- avatar / hero creation
-- goal selection
-- Quick Quests (short guided routines)
-- reward screen with XP, badges, streaks
-- dashboard with visible progression
-- skill tree / progression map
-- leaderboard or challenge layer
+### Primary buyer
+Urban parents of kids aged roughly 7–12 who:
 
-### Parent experience
-- linked parent-child flow
-- activity summary
-- safety and consistency messaging
-- child progress visibility
-- upgrade / subscription prompt
-
-### School / teacher direction
-- class participation view
-- challenge launch support
-- school movement-week potential
-
-## Product principles
-
-- **mobile-first** and easy to use in a browser
-- **short sessions** that fit busy schedules
-- **progress must be visible**
-- **safety must be explicit**
-- **social features must stay child-safe**
-- **motivation should come from game loops, not pressure**
-
-## Safety and trust
-
-Calix is intentionally designed with a constrained safety model.
-
-- separate kid and parent journeys
-- parent-linked child accounts
-- no open chat between kids
-- positive-only social interaction direction
-- safety-first parent messaging
-- age-appropriate, non-medical AI microcopy
-- privacy-aware handling for child-focused product flows
-
-## Business model
-
-The product is designed to be more than a hackathon demo.
-
-### Monetization direction
-- **Parent subscription** for premium progression, summaries, and advanced features
-- **14-day visible growth trial** to reduce purchase friction
-- **School licensing / partnerships** as an institutional channel
-
-### Why this can sustain
-- recurring parent-facing subscription model
-- school-led acquisition lowers trust friction
-- visible child progress increases retention and renewal intent
-- the product sits between wellness, parenting, and child development
-
-## Why now
-
-The opportunity exists because:
-
-- children are spending more time on screens
-- parents want structured alternatives but lack time and guidance
-- schools need easier wellness participation formats
-- bodyweight fitness is accessible, low-friction, and easy to repeat
-
-## Who this is for
+- are worried about rising screen time
+- see their child avoiding sports or outdoor play
+- want a safe at-home routine
+- do not have time to manage another class-based activity
+- need proof before paying for a fitness product
 
 ### Primary user
-Children, especially ages 8–13 in the current MVP framing, who respond to:
-- rewards
-- progression
+Kids who respond to:
+
 - avatars
+- rewards
 - streaks
-- challenge loops
+- progression
+- short, game-like challenges
 
-### Secondary user
-Parents who care about:
-- safety
-- consistency
-- visible progress
-- low-friction routines
-- value for money
+## What makes Calix different
 
-### Future user
-Teachers and schools who want:
-- class-level participation
-- movement challenges
-- easy reporting
+Most fitness products are built for adults and then lightly repackaged for children.
 
-## Success looks like
+Calix is designed around the **parent-child decision loop** from day one:
 
-Calix is not trying to win by having the biggest content library.
-It wins if it improves these signals:
+- kids see a playful, low-friction, game-like experience
+- parents see a safety-first, structured, trust-building experience
+- schools can become a distribution and engagement channel later
 
-- onboarding completion
-- first quest completion
-- daily / weekly quest repetition
-- streak continuation
-- parent dashboard opens
-- parent-linked accounts
-- trial-to-paid conversion
-- school adoption / challenge participation
+That is the wedge.
 
-## Tech and build notes
+Calix is not trying to replace sports academies.  
+It is solving the smaller but more frequent problem:
 
-This is a **TypeScript-based** product with a working MVP and live demo.
-The immediate goal is not feature sprawl. It is to make the smallest useful loop feel polished and repeatable.
+**How do we help a screen-heavy child complete one safe, enjoyable 5-minute movement session today — and come back tomorrow?**
 
-Recommended build focus:
+## How it works
 
-- landing
-- kid onboarding
-- first quest
-- reward state
-- dashboard
-- parent summary
+1. A child enters the kid flow and creates an avatar
+2. They choose a goal and start a short Quick Quest
+3. They complete a guided no-equipment movement session
+4. They earn XP, badges, streak progress, and unlocks
+5. A parent can review progress, consistency, and safety summaries
+6. The app suggests the next quest and builds a repeatable habit loop
+
+## Core product features
+
+- **5-minute Quick Quests**  
+  Short no-equipment routines designed for low friction and repeat use
+
+- **Avatar + gamified onboarding**  
+  Makes the first session feel playful instead of instructional
+
+- **XP, badges, streaks, and unlocks**  
+  Gives kids visible progress and a reason to return
+
+- **Skill tree / progression path**  
+  Turns workouts into a journey instead of isolated sessions
+
+- **Parent dashboard**  
+  Shows activity, consistency, progress, and safety-oriented summaries
+
+- **AI encouragement + parent summaries**  
+  Uses AI narrowly for motivation, next-step guidance, and plain-language parent updates
+
+- **Child-safe social design**  
+  Positive challenges and class-based motivation without open messaging
+
+## Why this can become a real business
+
+Calix has a simple business model:
+
+- **B2C:** parent subscription
+- **B2B2C:** school pilots and school licensing
+
+### Early pricing thesis
+
+- **Free:** limited beginner quests
+- **Calix Plus:** full progression, dashboard, streaks, summaries, and premium challenges
+- **School Pilot:** challenge-based adoption for classes and movement programs
+
+The goal is not to monetize immediately with complexity.  
+The goal is to earn trust first, show visible progress fast, and convert parents after a short “visible growth” period.
+
+## Safety and privacy
+
+Calix is designed with child safety in mind:
+
+- parent-linked usage and role separation
+- no open chat between kids
+- limited positive-only social interactions
+- privacy-aware handling of child data
+- safety-first messaging for parents
+- progress visibility without exposing sensitive child information broadly
+
+## Current MVP scope
+
+The current MVP focuses on one polished loop:
+
+**Landing → kid onboarding → first quest → reward screen → dashboard → parent summary**
+
+That is enough to demonstrate:
+
+- real user engagement
+- the habit loop
+- visible progression
+- the parent trust layer
+- the core product thesis
+
+## Product thesis
+
+**Calix helps busy parents of screen-heavy kids who avoid sports build a safe 5-minute daily movement habit at home.**
+
+## Demo
+
+Live demo: [Calix Demo](https://cali-x-ashy.vercel.app)
+
+## Tech stack
+
+_Add your actual stack here_
 
 ## Local setup
 
-If you want to run the project locally, use the package manager already configured in the repo.
-A typical flow is:
-
 ```bash
+# install dependencies
 npm install
+
+# start dev server
 npm run dev
-```
-
-If your local setup uses `pnpm` or `yarn`, swap the commands accordingly.
-
-## Roadmap
-
-### Now
-- polish the main kid loop
-- make parent trust clearer
-- improve progression visibility
-
-### Next
-- stronger challenge mechanics
-- better next-quest recommendation logic
-- improved parent reporting
-
-### Later
-- school dashboard expansion
-- challenge operations for classes
-- deeper retention systems
-- subscription optimization
-
-## What this project is really trying to prove
-
-Calix is testing a simple idea:
-
-**If fitness feels like progress instead of pressure, kids come back.**
-
-And if parents can clearly see that the product is safe, structured, and useful, they will support the habit instead of fighting for it.
-
-## Demo narrative
-
-Calix is not trying to compete with entertainment by asking kids to be more disciplined.
-It is trying to compete by making movement feel rewarding enough to earn attention.
-
-## Status
-
-Current state: working MVP / hackathon-stage product with a sharper positioning direction around kid fitness, parent trust, and school-led distribution.
-
----
-
-If you are reviewing this project, the key lens is not “how many features does it have?”
-The key question is:
-
-**Did this product find a real wedge in an ignored user segment, and is the loop strong enough to become a habit?**
