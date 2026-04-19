@@ -1,0 +1,76 @@
+---
+description: Block known agent and developer failure modes before they happen
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Anti-Pattern Enforcement Rules
+
+## Hard Stops — Never Do These
+
+### 1. Code Without Understanding
+```
+TRIGGER: About to write code without reading existing codebase
+BLOCK: Stop. Run UNDERSTAND phase (specops). Read first.
+REFERENCE: 01 Principles/specops.md
+```
+
+### 2. Skip Verification
+```
+TRIGGER: About to claim task complete without running the code
+BLOCK: Stop. Evidence required. "It should work" is not evidence.
+REFERENCE: 01 Principles/superpowers.md (verification-before-completion skill)
+```
+
+### 3. Agent Self-Review
+```
+TRIGGER: Builder reviewing own output
+BLOCK: Stop. Reviewer role must be separate. Builder cannot clear own work.
+REFERENCE: 01 Principles/three-man-team.md
+```
+
+### 4. Spec-Free Implementation
+```
+TRIGGER: "Let me just start building and we'll spec it out later"
+BLOCK: Stop. Spec must exist and be committed before code starts.
+REFERENCE: 01 Principles/specops.md
+```
+
+### 5. Ungated Dependency
+```
+TRIGGER: About to npm install / pip install / go get without review
+BLOCK: Stop. Run 5-criteria dependency gate first.
+REFERENCE: 04 Rules/dependency-gates.rules.mdc
+```
+
+## Soft Warnings — Pause and Think
+
+### Rationalization Detected
+If you catch ANY of these thoughts, pause 1 beat:
+- "This is just a quick fix" — quick fixes become the codebase
+- "I'll add tests later" — later never comes
+- "The spec is obvious" — obvious specs still need writing
+- "I know how this library works" — check the docs anyway
+- "We can refactor after it works" — working = shipped = no refactor budget
+- "This edge case won't happen" — it will happen in prod on Friday
+
+### Agent Communication Inflation
+When agent output grows verbose:
+- PAUSE: is this response longer than 3 paragraphs?
+- APPLY: caveman compression (`01 Principles/caveman.md`)
+- GOAL: same technical density, fewer tokens
+
+### Context Window Bloat
+When context grows large:
+- PAUSE: are we re-transmitting already-known context?
+- APPLY: mempalace AAAK compression (`01 Principles/mempalace.md`)
+- APPLY: cursor-memory-bank lazy loading (`01 Principles/cursor-memory-bank.md`)
+
+## System Design Traps
+Before finalizing any architecture decision:
+- [ ] CAP theorem — which two of three are you choosing? Is that intentional?
+- [ ] Consistency model — strong vs eventual — is this documented in spec?
+- [ ] Scaling assumption — vertical or horizontal? At what threshold does this break?
+- [ ] Single point of failure — where is it? Is it acceptable?
+- [ ] Premature optimization — is this actually a bottleneck or assumed?
+Reference: `01 Principles/system-design-primer.md`

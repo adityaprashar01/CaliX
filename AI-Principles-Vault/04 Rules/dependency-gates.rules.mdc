@@ -1,0 +1,97 @@
+---
+description: 5-criteria evaluation gate — every new package must pass before installation
+globs: ["**/package.json", "**/requirements.txt", "**/go.mod", "**/Cargo.toml", "**/pyproject.toml", "**/pom.xml"]
+alwaysApply: false
+---
+
+# Dependency Governance Gate
+
+## The Rule
+**No new dependency is added without passing all 5 criteria.**
+If ANY criteria fails → reject the package. Find an alternative or build it.
+
+## 5-Criteria Evaluation
+
+### Criteria 1 — Scope Justified
+**Question**: Is this package solving a problem that genuinely requires an external dependency?
+- Could we implement this in < 50 lines?
+- Is this solving a one-time problem or a recurring pattern?
+- Are we adding this for convenience or necessity?
+
+✅ Pass: Core functionality, complex algorithm, well-established protocol implementation
+❌ Fail: Simple utility, one-off transformation, something we can inline
+
+---
+
+### Criteria 2 — Maintenance Health
+**Question**: Is this package actively maintained and stable?
+- Last commit: within 12 months?
+- Open issues: are critical bugs being addressed?
+- Maintainer: single person or organization?
+- Versioning: semver followed?
+
+✅ Pass: Active commits, responsive maintainers, clear versioning
+❌ Fail: No commits in 2+ years, archived, single-maintainer with no succession plan
+
+---
+
+### Criteria 3 — Size & Dependency Footprint
+**Question**: Does the package's weight justify its value?
+- How large is the package + its transitive deps?
+- Does it pull in packages you don't need?
+- Does it significantly increase bundle size / install time?
+
+✅ Pass: Small footprint, minimal transitive deps, tree-shakeable
+❌ Fail: Massive install for minimal functionality, drags in 50+ transitive packages
+
+---
+
+### Criteria 4 — Security Posture
+**Question**: Is this package safe to run in our environment?
+- Any known CVEs? (check npm audit / pip-audit / cargo audit)
+- Code is reviewable (not obfuscated)?
+- Published from a trustworthy source?
+- Does it require excessive permissions?
+
+✅ Pass: No active CVEs, reputable publisher, reviewable code
+❌ Fail: Known CVEs, obfuscated source, suspicious permissions, typosquatting risk
+
+---
+
+### Criteria 5 — License Compatibility
+**Question**: Is the license compatible with our project?
+- Is the license OSI-approved?
+- Does it impose copyleft requirements on our code?
+- Is commercial use permitted?
+- Is attribution required?
+
+✅ Pass: MIT, Apache 2.0, BSD — no restrictions on commercial/private use
+⚠️  Review: LGPL, MPL — may impose conditions
+❌ Fail: GPL (copyleft propagation), AGPL (network use clause), proprietary, SSPL
+
+---
+
+## Evaluation Template
+```
+Package: <name>@<version>
+Purpose: <what it does for us>
+
+Criteria 1 — Scope:    ✅/❌  <brief note>
+Criteria 2 — Maintenance: ✅/❌  <last commit, maintainer>
+Criteria 3 — Size:     ✅/❌  <size, transitive dep count>
+Criteria 4 — Security: ✅/❌  <CVE status>
+Criteria 5 — License:  ✅/❌  <license name>
+
+DECISION: APPROVED / REJECTED
+Reason: <one line>
+```
+
+## Fast-Track Approvals
+These packages are pre-approved (no gate needed):
+- `zod`, `typescript`, `eslint`, `prettier` — universal tooling
+- Platform-native SDKs for services already in the stack
+- Packages already used elsewhere in the monorepo
+
+## Escalation
+If uncertain on any criteria → default to REJECT and discuss.
+Better to build it than to own a liability.

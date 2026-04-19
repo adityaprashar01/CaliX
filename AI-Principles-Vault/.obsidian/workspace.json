@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "fb056871c3e8fdda",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b2e8418cddeac62",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "45724db74d76496f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "05 Templates/workflow-note.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "workflow-note"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7fed0a83f57e39da",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee863c33d5fabc4b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1519861f0743986a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "55c68e2c91dc6325",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "c6dbf4c8ff052feb",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6c3c6628d7c14890",
+    "type": "split",
+    "children": [
+      {
+        "id": "764b3b453b64684a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d7c88f845b463c71",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "05 Templates/workflow-note.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for workflow-note"
+            }
+          },
+          {
+            "id": "5476bebf41a44356",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "05 Templates/workflow-note.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from workflow-note"
+            }
+          },
+          {
+            "id": "20c1c8deb83d4d2a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "adb2bf19da0ffa7f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "1cd23e665aada91b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "05 Templates/workflow-note.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of workflow-note"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "45724db74d76496f",
+  "lastOpenFiles": [
+    "99 Meta/resource-inventory.md",
+    "99 Meta/VAULT-README.md",
+    "00 MOC/Anti-Pitfalls.md",
+    "00 MOC/By-Phase.md",
+    "00 MOC/By-Domain.md",
+    "00 MOC/HOME.md",
+    "03 Anti-Patterns/system-design-traps.md",
+    "03 Anti-Patterns/agent-failure-modes.md",
+    "03 Anti-Patterns/rationalization-tables.md",
+    "02 Workflows/omx-canonical-flow.md",
+    "02 Workflows/three-man-team-flow.md",
+    "02 Workflows/superpowers-full-flow.md",
+    "02 Workflows/specops-4-phase.md",
+    "05 Templates/project-pre-init.md",
+    "05 Templates/principle-note.md",
+    "05 Templates/anti-pattern-note.md",
+    "01 Principles/three-man-team.md",
+    "01 Principles/system-design-primer.md",
+    "01 Principles/superpowers.md",
+    "01 Principles/specops.md",
+    "01 Principles/servers-mcp.md",
+    "01 Principles/rulefy.md",
+    "01 Principles/rest-api-patterns.md",
+    "01 Principles/openclaw.md",
+    "01 Principles/oh-my-codex.md",
+    "01 Principles/mempalace.md"
+  ]
+}

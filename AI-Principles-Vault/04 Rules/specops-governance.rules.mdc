@@ -1,0 +1,64 @@
+---
+description: Enforces SpecOps 4-phase spec-driven development flow across all project work
+globs: ["**/*.spec.md", "**/SPEC.md", "**/specs/**", "**/.specops.json"]
+alwaysApply: false
+---
+
+# SpecOps Governance Rules
+
+## The 4-Phase Contract
+Every feature MUST pass through all 4 phases in order. No skipping.
+
+```
+UNDERSTAND → SPEC → IMPLEMENT → COMPLETE
+```
+
+## Phase Gates
+
+### UNDERSTAND Gate
+Before moving to SPEC:
+- [ ] Codebase read — no coding from assumptions
+- [ ] Scope defined (IN vs OUT explicitly written)
+- [ ] All unknowns listed and resolved or deferred
+- [ ] Existing implementations identified (no re-inventing)
+
+### SPEC Gate
+Before moving to IMPLEMENT:
+- [ ] All requirements written in EARS notation: `WHEN [event] THE SYSTEM SHALL [behavior]`
+- [ ] Acceptance criteria are measurable (not "works correctly")
+- [ ] Design decision documented with rationale (not just "use X")
+- [ ] Dependency gate passed for every new package
+- [ ] Spec committed to git
+
+### IMPLEMENT Gate
+During implementation:
+- [ ] Code from the spec, not from memory or assumptions
+- [ ] Any divergence from spec documented in Drift Log
+- [ ] No new scope added without spec amendment
+- [ ] Tests written before or alongside (not after) implementation
+
+### COMPLETE Gate
+Before marking done:
+- [ ] Adversarial evaluation score ≥ 7/10
+- [ ] All acceptance criteria verified with evidence
+- [ ] Drift Log reconciled
+- [ ] Production learnings section filled (even if empty: "none observed")
+
+## EARS Notation Reference
+| Pattern | Template |
+|---------|----------|
+| Event-driven | `WHEN [trigger] THE SYSTEM SHALL [response]` |
+| Conditional | `IF [condition] THEN THE SYSTEM SHALL [behavior]` |
+| Unwanted behavior | `IF [condition] THE SYSTEM SHALL NOT [behavior]` |
+| State-driven | `WHILE [state] THE SYSTEM SHALL [behavior]` |
+| Optional feature | `WHERE [feature included] THE SYSTEM SHALL [behavior]` |
+
+## Dependency Governance
+Every new package must pass: see `dependency-gates.rules.mdc`
+
+## Adversarial Evaluation Rubric
+Score 1-10. Must be ≥ 7 to mark COMPLETE.
+- **Correctness** (0-3): Does it do what the spec says?
+- **Coverage** (0-3): Are all acceptance criteria provably met?
+- **Robustness** (0-2): Edge cases handled? Error paths tested?
+- **Cleanliness** (0-2): No spec drift, no dead code, no TODOs left

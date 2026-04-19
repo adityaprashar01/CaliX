@@ -1,0 +1,43 @@
+---
+description: Master governance rules for using the AI-Principles vault as a pre-init knowledge base
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# AI Principles Vault — Master Rules
+
+## Pre-Init Gate (run before ANY new project)
+- ALWAYS run `05 Templates/project-pre-init.md` checklist before writing first line of code
+- NEVER start implementation without a spec (see `05 Templates/specops-spec.md`)
+- NEVER add a dependency without passing the 5-criteria gate (see `dependency-gates.rules.mdc`)
+
+## Principle Lookup by Phase
+When in doubt about what to do at any dev phase, consult:
+| Phase | Primary Resource | Note |
+|-------|-----------------|------|
+| Understanding problem | `01 Principles/specops.md` | UNDERSTAND phase |
+| Writing requirements | `01 Principles/specops.md` | EARS notation |
+| Planning architecture | `01 Principles/agent-skills.md` | /spec, /plan skills |
+| Breaking down tasks | `01 Principles/three-man-team.md` | Architect role |
+| Implementing | `01 Principles/superpowers.md` | TDD, subagent-driven |
+| Reviewing | `01 Principles/agent-skills.md` | /review skills |
+| Shipping | `01 Principles/superpowers.md` | finishing-branch skill |
+
+## Agent Communication Rules
+- Default to caveman compression when agent output exceeds 3 paragraphs (see `01 Principles/caveman.md`)
+- Multi-agent work uses three-man-team structure: Architect → Builder → Reviewer (see `01 Principles/three-man-team.md`)
+- No agent starts implementation without approved plan artifact
+
+## Memory & Context Rules
+- Long sessions: use mempalace AAAK compression for context preservation (see `01 Principles/mempalace.md`)
+- Cursor sessions: use cursor-memory-bank lazy-loading commands (see `01 Principles/cursor-memory-bank.md`)
+- Never re-read files already in context — trust what you have
+
+## Anti-Rationalization Enforcement
+If you catch yourself thinking any of these, STOP and consult the referenced principle:
+- "This is simple, I don't need a spec" → `01 Principles/specops.md`
+- "I know this library, no need to check" → `04 Rules/dependency-gates.rules.mdc`
+- "Let me just start coding and figure it out" → `01 Principles/agent-skills.md` (DEFINE phase)
+- "The test can wait until after I build it" → `01 Principles/superpowers.md` (TDD)
+- "I'll review my own work" → `01 Principles/three-man-team.md` (Reviewer role)
+- "The spec is in my head" → `01 Principles/specops.md` (git-tracked specs)
