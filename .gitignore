@@ -50,3 +50,4 @@ blob-report/
 # lighthouse
 .lighthouseci/
 .omx/
+.env*.local
