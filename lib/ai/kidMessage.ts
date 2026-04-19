@@ -27,7 +27,7 @@ export const kidFallbackPool: KidMessageResult[] = [
 ];
 
 function randomFallback() {
-  return kidFallbackPool[Math.floor(Math.random() * kidFallbackPool.length)] ?? kidFallbackPool[0];
+  return kidFallbackPool[Math.floor(Math.random() * kidFallbackPool.length)] || kidFallbackPool[0]!;
 }
 
 export async function getKidEncouragement({

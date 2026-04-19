@@ -1,61 +1,213 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { useKidStore } from "@/lib/store";
-import { AvatarBadge } from "@/components/kid/AvatarBadge";
 
-const ages = ["6-9", "10-12", "13-15"];
-const colors = ["blue", "red", "green", "purple", "orange"];
-const colorHex: Record<string, string> = { blue: "#3B82F6", red: "#EF4444", green: "#22C55E", purple: "#A855F7", orange: "#F97316" };
-const styles = [{ id: "striker", emoji: "🥊" }, { id: "balancer", emoji: "⚖️" }, { id: "mover", emoji: "🤸" }];
-const goals = [{ id: "strength", label: "Get Stronger", emoji: "💪" }, { id: "balance", label: "Improve Balance", emoji: "⚖️" }, { id: "flexibility", label: "Feel Flexible", emoji: "🤸" }, { id: "fun", label: "Just Have Fun", emoji: "🎮" }];
+import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { AvatarBadge } from "@/components/kid/AvatarBadge";
+import { useKidStore, type AgeBucket, type AvatarColor, type AvatarStyle } from "@/lib/store";
+
+const ageOptions = ["6-9", "10-12", "13-15"] as const satisfies readonly Exclude<AgeBucket, null>[];
+const colorOptions = ["blue", "green", "purple", "orange", "pink"] as const satisfies readonly AvatarColor[];
+const styleOptions = [
+  { id: "striker", emoji: "🥊", label: "Striker" },
+  { id: "balancer", emoji: "⚖️", label: "Balancer" },
+  { id: "mover", emoji: "🤸", label: "Mover" },
+] as const satisfies readonly { id: AvatarStyle; emoji: string; label: string }[];
+const goalOptions = [
+  { id: "stronger", label: "Get Stronger", emoji: "💪" },
+  { id: "balance", label: "Improve Balance", emoji: "⚖️" },
+  { id: "flexible", label: "Feel Flexible", emoji: "🤸" },
+  { id: "fun", label: "Just Have Fun", emoji: "🎮" },
+] as const;
+
+const styleEmojiMap: Record<AvatarStyle, string> = {
+  striker: "🥊",
+  balancer: "⚖️",
+  mover: "🤸",
+};
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const completeOnboarding = useKidStore((s) => s.completeOnboarding);
+  const completeOnboarding = useKidStore((state) => state.completeOnboarding);
   const [step, setStep] = useState(0);
-  const [ageBucket, setAgeBucket] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [avatarColor, setAvatarColor] = useState("blue");
-  const [avatarStyle, setAvatarStyle] = useState("striker");
+  const [ageBucket, setAgeBucket] = useState<Exclude<AgeBucket, null>>("10-12");
+  const [displayName, setDisplayName] = useState("Aarav");
+  const [avatarColor, setAvatarColor] = useState<AvatarColor>("blue");
+  const [avatarStyle, setAvatarStyle] = useState<AvatarStyle>("striker");
 
-  const finish = (goalType: string) => {
-    completeOnboarding({ displayName: displayName || "Hero", ageBucket, avatarColor, avatarStyle, goalType });
+  const finish = (goalType: (typeof goalOptions)[number]["id"]) => {
+    completeOnboarding({
+      displayName: displayName.trim() || "Aarav",
+      ageBucket,
+      avatarColor,
+      avatarStyle,
+      goalType,
+    });
     router.push("/hub");
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-calix-bg px-6 pt-12">
-      <div className="mb-8 flex gap-2">
-        {[0, 1, 2].map((i) => <div key={i} className={`h-2.5 w-2.5 rounded-full ${i <= step ? "bg-calix-accent" : "bg-calix-soft"}`} />)}
+    <main className="min-h-screen bg-[var(--calix-bg)] px-6 pb-10 pt-12">
+      <div className="mx-auto max-w-sm">
+        <div className="mb-6 flex items-center justify-center gap-2">
+          {[0, 1, 2].map((dot) => (
+            <motion.div
+              key={dot}
+              className="h-2.5 w-8 rounded-full"
+              animate={{ backgroundColor: dot <= step ? "var(--calix-accent)" : "rgba(59,91,255,0.15)" }}
+            />
+          ))}
+        </div>
+        {step > 0 ? (
+          <button
+            type="button"
+            onClick={() => setStep((current) => current - 1)}
+            className="mb-4 min-h-11 text-sm font-semibold text-[var(--calix-accent)]"
+          >
+            ← Back
+          </button>
+        ) : null}
+
+        <AnimatePresence mode="wait">
+          {step === 0 ? (
+            <motion.section
+              key="step-0"
+              initial={{ opacity: 0, x: 32 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -32 }}
+              className="space-y-5"
+            >
+              <div className="text-center">
+                <h1 className="text-3xl font-bold text-[var(--calix-ink)]">How old are you?</h1>
+                <p className="mt-2 text-sm text-[var(--calix-ink)]/60">Tap once and move fast — this should take seconds.</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3">
+                {ageOptions.map((option) => (
+                  <motion.button
+                    key={option}
+                    type="button"
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setAgeBucket(option);
+                      setStep(1);
+                    }}
+                    className="min-h-14 rounded-3xl bg-white px-5 py-4 text-lg font-semibold text-[var(--calix-ink)] shadow-md"
+                  >
+                    {option}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.section>
+          ) : null}
+
+          {step === 1 ? (
+            <motion.section
+              key="step-1"
+              initial={{ opacity: 0, x: 32 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -32 }}
+              className="space-y-5"
+            >
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-[var(--calix-ink)]">Create your hero!</h2>
+                <p className="mt-2 text-sm text-[var(--calix-ink)]/60">Pick a color and style that feels like you.</p>
+              </div>
+              <div className="flex justify-center">
+                <AvatarBadge color={avatarColor} styleEmoji={styleEmojiMap[avatarStyle]} size={88} />
+              </div>
+              <input
+                value={displayName}
+                onChange={(event) => setDisplayName(event.target.value)}
+                className="min-h-12 w-full rounded-2xl border border-[var(--calix-soft)] bg-white px-4 text-center text-lg text-[var(--calix-ink)]"
+                placeholder="Your hero name"
+                aria-label="Hero name"
+              />
+              <div className="flex items-center justify-center gap-3">
+                {colorOptions.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => setAvatarColor(option)}
+                    className={`h-11 w-11 rounded-full border-4 ${avatarColor === option ? "border-[var(--calix-ink)]" : "border-white"}`}
+                    style={{
+                      background:
+                        option === "blue"
+                          ? "linear-gradient(135deg, #3B5BFF, #8AA2FF)"
+                          : option === "green"
+                            ? "linear-gradient(135deg, #2FBF71, #83E2AA)"
+                            : option === "purple"
+                              ? "linear-gradient(135deg, #A855F7, #D2A7FF)"
+                              : option === "orange"
+                                ? "linear-gradient(135deg, #F59E0B, #FFD479)"
+                                : "linear-gradient(135deg, #EC4899, #FF9DD1)",
+                    }}
+                    aria-label={`Choose ${option} avatar color`}
+                  />
+                ))}
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {styleOptions.map((option) => (
+                  <motion.button
+                    key={option.id}
+                    type="button"
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setAvatarStyle(option.id)}
+                    className={`min-h-16 rounded-2xl px-3 py-3 text-center ${
+                      avatarStyle === option.id ? "bg-[var(--calix-soft)] ring-2 ring-[var(--calix-accent)]" : "bg-white"
+                    }`}
+                  >
+                    <div className="text-3xl">{option.emoji}</div>
+                    <div className="mt-1 text-xs font-semibold text-[var(--calix-ink)]">{option.label}</div>
+                  </motion.button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setStep(2)}
+                className="min-h-12 w-full rounded-full bg-[var(--calix-accent)] px-5 py-3 font-semibold text-white"
+              >
+                Next
+              </button>
+            </motion.section>
+          ) : null}
+
+          {step === 2 ? (
+            <motion.section
+              key="step-2"
+              initial={{ opacity: 0, x: 32 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -32 }}
+              className="space-y-5"
+            >
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-[var(--calix-ink)]">What&apos;s your goal?</h2>
+                <p className="mt-2 text-sm text-[var(--calix-ink)]/60">One tap and you&apos;re ready to grow.</p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {goalOptions.map((goal) => (
+                  <motion.button
+                    key={goal.id}
+                    type="button"
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => finish(goal.id)}
+                    className="flex min-h-24 flex-col items-center justify-center rounded-3xl bg-white px-3 py-4 text-center shadow-md"
+                  >
+                    <div className="text-3xl">{goal.emoji}</div>
+                    <div className="mt-2 text-sm font-semibold text-[var(--calix-ink)]">{goal.label}</div>
+                  </motion.button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => finish("stronger")}
+                className="min-h-12 w-full rounded-full bg-[var(--calix-joy)] px-5 py-3 font-bold text-[var(--calix-ink)]"
+              >
+                Ready to Grow!
+              </button>
+            </motion.section>
+          ) : null}
+        </AnimatePresence>
       </div>
-      {step > 0 && <button onClick={() => setStep(step - 1)} className="mb-4 self-start text-sm text-calix-accent" type="button" aria-label="Go back">&larr; Back</button>}
-      <AnimatePresence mode="wait">
-        {step === 0 && (
-          <motion.div key="s0" className="flex w-full max-w-sm flex-col items-center gap-4" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
-            <h2 className="text-2xl font-bold text-calix-ink">How old are you?</h2>
-            <div className="flex gap-3">{ages.map((a) => <button key={a} onClick={() => { setAgeBucket(a); setStep(1); }} className="min-h-[44px] min-w-[80px] rounded-2xl bg-white p-4 text-lg font-semibold shadow-md transition-transform active:scale-95" type="button">{a}</button>)}</div>
-          </motion.div>
-        )}
-        {step === 1 && (
-          <motion.div key="s1" className="flex w-full max-w-sm flex-col items-center gap-6" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
-            <h2 className="text-2xl font-bold text-calix-ink">Create your hero!</h2>
-            <AvatarBadge color={avatarColor} style={avatarStyle} size="lg" />
-            <input value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="Your hero name" className="w-full rounded-xl border-2 border-calix-soft bg-white px-4 py-3 text-center text-lg focus:border-calix-accent focus:outline-none" aria-label="Hero name" />
-            <div className="flex gap-3">{colors.map((c) => <button key={c} onClick={() => setAvatarColor(c)} className={`h-10 w-10 rounded-full border-2 transition-transform ${avatarColor === c ? "scale-110 border-calix-ink" : "border-transparent"}`} style={{ backgroundColor: colorHex[c] }} type="button" aria-label={`Color ${c}`} />)}</div>
-            <div className="flex gap-4">{styles.map((s) => <button key={s.id} onClick={() => setAvatarStyle(s.id)} className={`min-h-[44px] min-w-[44px] rounded-xl p-3 text-2xl ${avatarStyle === s.id ? "bg-calix-accent/20 ring-2 ring-calix-accent" : "bg-white"}`} type="button" aria-label={s.id}>{s.emoji}</button>)}</div>
-            <button onClick={() => setStep(2)} className="mt-2 rounded-full bg-calix-accent px-8 py-3 font-semibold text-white" type="button">Next</button>
-          </motion.div>
-        )}
-        {step === 2 && (
-          <motion.div key="s2" className="flex w-full max-w-sm flex-col items-center gap-4" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }}>
-            <h2 className="text-2xl font-bold text-calix-ink">What&apos;s your goal?</h2>
-            <div className="grid grid-cols-2 gap-3">{goals.map((g) => <button key={g.id} onClick={() => finish(g.id)} className="flex min-h-[80px] flex-col items-center justify-center gap-1 rounded-2xl bg-white p-4 shadow-md transition-transform active:scale-95" type="button" aria-label={g.label}><span className="text-3xl">{g.emoji}</span><span className="text-sm font-medium">{g.label}</span></button>)}</div>
-            <p className="mt-4 text-xs text-calix-ink/50">Tap your goal to begin!</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </main>
   );
 }
