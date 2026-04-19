@@ -23,6 +23,12 @@ Calix is designed around a sharper problem:
 
 **How do we make fitness feel fun enough for kids to return, while making it safe and measurable enough for parents to approve?**
 
+But there is an even bigger gap underneath that question:
+
+**No one owns the "how is my child really doing?" dashboard for Indian parents.**
+
+Fitness apps track the body. Mood apps track the mind. School apps track grades. Parents toggle between three apps and still don't know if their kid is okay. Calix is building the single-pane answer — physical and emotional wellness in one trusted view.
+
 ## Why this is not “just another fitness app”
 
 Most fitness apps optimize for discipline.
