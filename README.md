@@ -2,6 +2,8 @@
 
 **Move. Unlock. Grow.**
 
+> **Repository:** [CaliX on GitHub](https://github.com/adityaprashar01/CaliX) — this codebase uses the **CaliX** spelling in tooling and env (`OPENROUTER_APP_NAME`, package metadata); **Calix** is the product name in copy and positioning.
+
 Calix is a gamified fitness web app for children that turns short bodyweight workouts into a progression loop that feels closer to a game than a chore. It is built for kids who are spending more time on screens than on movement, and for parents who want a safer, more structured way to build healthy habits.
 
 ## What Calix is solving
@@ -123,6 +125,8 @@ Calix is intentionally designed with a constrained safety model.
 - age-appropriate, non-medical AI microcopy
 - privacy-aware handling for child-focused product flows
 
+Implementation direction in this repo: role-aware routes (kid, parent, teacher), server-side session checks, and no open peer messaging in the MVP surface described here.
+
 ## Business model
 
 The product is designed to be more than a hackathon demo.
@@ -199,17 +203,103 @@ Recommended build focus:
 - dashboard
 - parent summary
 
+### Stack (this repository)
+
+| Layer | Choice |
+|--------|--------|
+| Runtime | **Node.js 20+** |
+| Package manager | **pnpm** 9+ (see `package.json` `packageManager`) |
+| Framework | **Next.js 15** (App Router), **React 19** |
+| Language | **TypeScript** (strict) |
+| Styling | **Tailwind CSS 4**, **shadcn/ui**-style primitives under `components/ui` |
+| Motion | **Framer Motion** |
+| Data fetching / client state | **TanStack Query 5**, **Zustand** |
+| Database | **PostgreSQL** via **Prisma 5** |
+| Auth | **Supabase** (`@supabase/supabase-js`, `@supabase/ssr`) |
+| AI | **OpenAI-compatible SDK** pointed at **OpenRouter** (`https://openrouter.ai/api/v1`) |
+| Validation | **Zod** |
+| Logging | **pino** (avoid raw `console.log` in production paths) |
+| Analytics | **PostHog** (browser + server) |
+| Unit tests | **Vitest** + **Testing Library** |
+| E2E / a11y | **Playwright** + **axe-core** |
+
+### High-level app structure
+
+- **`app/(marketing)/`** — landing, sign-in, role select, auth callback  
+- **`app/(kid)/`** — kid hub, onboarding, quests, rewards, skills, challenges, friends, assessment  
+- **`app/parent/`** — parent onboarding, children, hub  
+- **`app/teacher/`** — class-oriented surfaces  
+- **`app/api/**`** — route handlers (e.g. AI endpoints under `app/api/ai/`)  
+
+Prisma schema and migrations live under **`prisma/`**. Product specs and notes can live under **`specs/`** (see `specs/README.md`).
+
 ## Local setup
 
-If you want to run the project locally, use the package manager already configured in the repo.
-A typical flow is:
+The repo is configured for **pnpm**. Node **20+** is required.
+
+1. **Install dependencies**
 
 ```bash
-npm install
-npm run dev
+pnpm install
 ```
 
-If your local setup uses `pnpm` or `yarn`, swap the commands accordingly.
+2. **Environment**
+
+Copy the example file and fill in values (Supabase, database URLs, OpenRouter, PostHog, app secrets):
+
+```bash
+cp .env.example .env.local
+```
+
+See **`.env.example`** for every variable name and short comments. Never commit real secrets or the Supabase service role key to the client.
+
+3. **Database**
+
+Apply migrations and optionally seed demo data:
+
+```bash
+pnpm db:migrate
+pnpm db:seed
+# or: pnpm db:seed:demo / pnpm db:seed:prod (when appropriate)
+```
+
+4. **Run the dev server**
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) (or the host shown in the terminal).
+
+If you prefer **npm** or **yarn**, equivalent commands exist, but CI and team conventions assume **pnpm**.
+
+### Useful scripts
+
+| Script | Purpose |
+|--------|---------|
+| `pnpm dev` | Next.js dev server |
+| `pnpm build` | `prisma generate` + production build |
+| `pnpm start` | Run production server locally |
+| `pnpm typecheck` | TypeScript `--noEmit` |
+| `pnpm lint` | ESLint (Next), zero warnings allowed |
+| `pnpm test` | Vitest (single run) |
+| `pnpm test:watch` | Vitest watch mode |
+| `pnpm e2e` | Playwright |
+| `pnpm e2e:ui` | Playwright UI mode |
+| `pnpm db:studio` | Prisma Studio |
+| `pnpm format` | Prettier |
+| `pnpm lighthouse` | Lighthouse CI autorun |
+
+### Quality bar before calling a change “done”
+
+Typical gates for this codebase (adjust for your branch policy):
+
+- `pnpm typecheck`
+- `pnpm lint`
+- `pnpm test`
+- `pnpm e2e` (when flows are touched)
+
+New API routes should validate input/output (e.g. Zod) and ship with tests where practical.
 
 ## Roadmap
 
@@ -254,10 +344,13 @@ The key question is:
 **Did this product find a real wedge in an ignored user segment, and is the loop strong enough to become a habit?**
 
 ## License
+
 This project is licensed under the MIT License.
 
 ## Pricing
+
 Calix uses a parent subscription model with a free tier, a ₹499/month premium plan, and a school pilot model.
 
 ## Safety
-Calix is designed with parent-linked child accounts, role separation, no open chat between kids, limited positive-only social interactions, and privacy-aware handling of minor data.
+
+Calix is designed with parent-linked child accounts, role separation, no open chat between kids, limited positive-only social interactions, and privacy-aware handling of minor data. For the fuller product framing, see **Safety and trust** above.
