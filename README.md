@@ -252,3 +252,12 @@ If you are reviewing this project, the key lens is not “how many features does
 The key question is:
 
 **Did this product find a real wedge in an ignored user segment, and is the loop strong enough to become a habit?**
+
+## License
+This project is licensed under the MIT License.
+
+## Pricing
+Calix uses a parent subscription model with a free tier, a ₹499/month premium plan, and a school pilot model.
+
+## Safety
+Calix is designed with parent-linked child accounts, role separation, no open chat between kids, limited positive-only social interactions, and privacy-aware handling of minor data.
